@@ -1,0 +1,4 @@
+services:
+    payment:
+        class: simplephp\Bundle\Payment
+        arguments: []

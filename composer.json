@@ -1,0 +1,22 @@
+{
+    "name": "simplephp/payment",
+    "description": "this payment bundle for symfony2",
+    "authors": [
+        {
+            "name": "simplephp",
+            "email": "askyiwang@gmail.com"
+        }
+    ],
+
+    "keywords": ["alipay","pay", "payease", "weixin", "symfony2", "bundle"],
+    "homepage": "https://github.com/simplephp/payment",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "simplephp\\Bundle\\": ""
+        }
+    }
+}
