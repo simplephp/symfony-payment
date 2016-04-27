@@ -1,20 +1,15 @@
 <?php
+/**
+ * 支付宝展示
+ */
+namespace AppBundle\Controller;
 
-namespace simplephp\Bundle\Tests\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
-class DefaultControllerTest extends WebTestCase
+class DefaultController extends Controller
 {
-    public function testIndex()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/');
-
-        $this->assertContains('Hello World', $client->getResponse()->getContent());
-    }
-
     /**
      * @Route("/", name="homepage")
      */
@@ -37,48 +32,9 @@ class DefaultControllerTest extends WebTestCase
     }
 
     /**
-     * 首信易
-     * @Route("/payease", name="payease")
-     * @param Request $request
-     */
-    public function payeaseAction(Request $request) {
-        $payease_mid = $this->getParameter('payment.payease.mid');
-        $order_ymd = date('Ymd');
-        $v_date = date('His');
-        // 首信易订单号是有格式的
-        $order_no = $order_ymd.'-' . $payease_mid.'-'.$v_date;
-
-        $option = [
-            'pmode'         => 3,                       //银行ID
-            'order_no'      => $order_no,               //订单
-            'rcvname'	    => '1001',                  //收货人姓名,建议用商户编号uid代替或者是英文数字uname。因为首信平台的编号是gb2312的
-            'rcvaddr'	    => '2001',                  //收货人地址，可用商户编号代替
-            'rcvtel'	    => '15683272574',           //收货人电话
-            'rcvpost'	    => '401228',                //收货人邮编
-            'money'	        => 0.01,                    //订单金额
-            'ymd'	        => $order_ymd,              //订单时间
-            'orderstatus'	=> 1,                       //配货状态:0-未配齐，1-已配
-            'ordername'	    => '12',                    //产品ID
-            'moneytype'	    => 0,                       //0为人民币，1为美元，2为欧元，3为英镑，4为日元，5为韩元，6为澳大利亚元，7为卢布(内卡商户币种只能为人民币)
-            'return_url'	=> $this->generateUrl('payeasereturn', [], 0),   //首信易只能自定义同步地址，异步地址需要联系首信易官网指定
-        ];
-        $payment = $this->get('payment')->get('payease');
-        echo $payment->pay($option);
-        return $this->render('default/payease.html.twig');
-    }
-
-    /**
-     * 首信易同步回调
-     * @Route("/payeasereturn", name="payeasereturn")
-     * @param Request $request
-     */
-    public function payeasereturn(Request $request) {
-
-    }
-    /**
      * @Route("/alipayreturn", name="alipayreturn")
      */
-    public function alipayreturn(Request $request) {
+    public function alipayreturnAction(Request $request) {
         $payment = $this->get('payment')->get('alipay');
         $verify_result = $payment->verifyReturn();
 
@@ -122,7 +78,7 @@ class DefaultControllerTest extends WebTestCase
     /**
      * @Route("/alipaynotify", name="alipaynotify")
      */
-    public function alipaynotify(Request $request) {
+    public function alipaynotifyAction(Request $request) {
         $payment = $this->get('payment')->get('alipay');
         $verify_result = $payment->verifyNotify();
         if($verify_result) {
