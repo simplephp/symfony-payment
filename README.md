@@ -11,9 +11,13 @@ QQ :841694874
 
 ``` yml
     "require" : {
-        "simplephp/payment": "dev",
+        "simplephp/payment": "dev-master",
     }
 ``` 
+OR 
+``` php
+    composer require simplephp/payment dev-master
+```
 
 **2** Register the bundle in ``app/AppKernel.php``
 
