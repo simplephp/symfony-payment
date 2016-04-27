@@ -3,8 +3,8 @@
     "description": "this payment bundle for symfony2",
     "authors": [
         {
-            "name": "simplephp",
-            "email": "askyiwang@gmail.com"
+            "name": "kevin",
+            "email": "841694874@qq.com"
         }
     ],
 
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "simplephp\\Bundle\\": ""
+            "simplephp\\payment\\": ""
         }
     }
 }
