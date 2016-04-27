@@ -1,6 +1,9 @@
-Symfony2 Alipay bundle
+PaymentBundle for symfony2
 
-This bundle permits you to create, modify and read excel objects.
+PHP界的小学生写的 payment 支付组件基于Symfony2，只是简单封装而已、可扩展，欢迎大家拍砖，有不懂的可以联系我。
+邮箱:841694874@qq.com
+QQ :841694874
+微信技术交流: king-1974
 
 ## Installation
 
