@@ -1,6 +1,6 @@
 <?php
 
-namespace simplephp\Bundle\Tests\Controller;
+namespace simplephp\payment\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

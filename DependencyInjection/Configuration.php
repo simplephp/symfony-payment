@@ -1,6 +1,6 @@
 <?php
 
-namespace simplephp\Bundle\DependencyInjection;
+namespace simplephp\payment\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -29,7 +29,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('partner')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('key')->isRequired()->cannotBeEmpty()->end()
-                        ->scalarNode('cacert')->defaultValue("%kernel.root_dir%/../vendor/simplephp/Bundle/src/Alipay/cacert.pem")->end()
+                        ->scalarNode('cacert')->defaultValue("%kernel.root_dir%/../vendor/simplephp/payment/src/Alipay/cacert.pem")->end()
                 ->end()
             ->end()
             ->arrayNode('payease')

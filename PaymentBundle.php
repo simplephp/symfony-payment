@@ -1,6 +1,6 @@
 <?php
 
-namespace simplephp\Bundle;
+namespace simplephp\payment;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

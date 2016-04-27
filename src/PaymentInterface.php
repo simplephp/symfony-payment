@@ -7,7 +7,7 @@
  * created by PhpStorm.
  */
 
-namespace simplephp\Bundle\src;
+namespace simplephp\payment\src;
 
 interface PaymentInterface {
 
@@ -25,15 +25,16 @@ interface PaymentInterface {
     public function pay($option);
 
     /**
-     * 支付宝同步通知
+     * 同步通知
+     * @param $option
      * @return mixed
      */
-    public function verifyReturn();
+    public function verifyReturn($option);
 
     /**
-     * 支付宝异步通知
+     * 异步通知
      * @return mixed
      */
-    public function verifyNotify();
+    public function verifyNotify($option);
 
 } 

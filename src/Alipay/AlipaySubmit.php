@@ -1,5 +1,5 @@
 <?php
-namespace simplephp\Bundle\src\Alipay;
+namespace simplephp\payment\src\Alipay;
 
 require_once(__DIR__.'/AlipayCore.php');
 require_once(__DIR__.'/AlipayMd5.php');

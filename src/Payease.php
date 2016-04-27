@@ -7,12 +7,10 @@
  * @Time: 23:33
  * @description
  */
-namespace simplephp\Bundle\src;
+namespace simplephp\payment\src;
 
-use simplephp\Bundle\src\Alipay\AlipaySubmit;
-use simplephp\Bundle\src\Alipay\AlipayNotify;
 
-class Payease implements \simplephp\Bundle\src\PaymentInterface
+class Payease implements \simplephp\payment\src\PaymentInterface
 {
     /**
      * 首信易支付网关
@@ -147,20 +145,22 @@ class Payease implements \simplephp\Bundle\src\PaymentInterface
 
     /**
      * 首信易同步
-     * @return mixed|void
+     * @param array $option
+     * @return bool|mixed
      */
-    public function verifyReturn() {
+    public function verifyReturn($option = array()) {
         //计算得出通知验证结果
-        $data1 = $v_oid.$v_pstatus.$v_pstring.$v_pmode;
+
+        $data1 = $option['v_oid']. $option['v_pstatus']. $option['v_pstring']. $option['v_pmode'];
         $md5info = $this->hmac($this->payease_config['payease_security_code'], $data1);
 
-        $data2 = $v_amount.$v_moneytype;
+        $data2 = $option['v_amount'].$option['v_moneytype'];
         $md5money= $this->hmac($this->payease_config['payease_security_code'], $data2);
 
-        if($md5info == $v_md5info && $md5money == $v_md5money) {
-            if($v_pstatus == '20') {
+        if($md5info == $option['v_md5info'] && $md5money == $option['v_md5money']) {
+            if($option['v_pstatus'] == '20') {
                 return true;
-            } else if($v_pstatus=='30') {
+            } else if($option['v_pstatus']=='30') {
                 return false;
             }  else {
                 return false;
@@ -172,19 +172,20 @@ class Payease implements \simplephp\Bundle\src\PaymentInterface
 
     /**
      * 首信易异步
-     * @return mixed|void
+     * @param array $option
+     * @return bool|mixed
      */
-    public function verifyNotify() {
-        $data1 = $v_oid.$v_pmode.$v_pstatus.$v_pstring.$v_count;
+    public function verifyNotify($option) {
+        $data1 = $option['v_oid'].$option['v_pmode'].$option['v_pstatus'].$option['v_pstring'].$option['v_count'];
         $mac = $this->hmac($this->payease_config['payease_security_code'], $data1);
 
-        $data2 = $v_amount.$v_moneytype;
+        $data2 = $option['v_amount'].$option['v_moneytype'];
         $md5money= $this->hmac($this->payease_config['payease_security_code'], $data2);
 
-        if($mac == $v_mac or $md5money == $v_md5money) {
-            if($v_pstatus == '1') {
+        if($mac == $option['v_mac'] or $md5money == $option['v_md5money']) {
+            if($option['v_pstatus'] == '1') {
                 return true;
-            } else if($v_pstatus=='3') {
+            } else if($option['v_pstatus'] == '3') {
                 return false;
             }  else {
                 return false;

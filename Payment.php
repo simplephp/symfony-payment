@@ -6,7 +6,7 @@
  * date: 2016/4/2516:35
  * created by PhpStorm.
  */
-namespace simplephp\Bundle;
+namespace simplephp\payment;
 
 class Payment {
 
@@ -15,8 +15,8 @@ class Payment {
 
     // 支付 map
     private $support_map = [
-        'alipay' => 'simplephp\\Bundle\\src\\Alipay',
-        'payease' => 'simplephp\\Bundle\\src\\Payease'
+        'alipay' => 'simplephp\\payment\\src\\Alipay',
+        'payease' => 'simplephp\\payment\\src\\Payease'
     ];
 
     /**

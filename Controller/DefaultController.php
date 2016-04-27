@@ -1,6 +1,6 @@
 <?php
 
-namespace simplephp\Bundle\Controller;
+namespace simplephp\payment\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

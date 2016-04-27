@@ -7,12 +7,12 @@
  * @Time: 23:33
  * @description
  */
-namespace simplephp\Bundle\src;
+namespace simplephp\payment\src;
 
-use simplephp\Bundle\src\Alipay\AlipaySubmit;
-use simplephp\Bundle\src\Alipay\AlipayNotify;
+use simplephp\payment\src\Alipay\AlipaySubmit;
+use simplephp\payment\src\Alipay\AlipayNotify;
 
-class Alipay implements \simplephp\Bundle\src\PaymentInterface
+class Alipay implements \simplephp\payment\src\PaymentInterface
 {
     private $alipay_config = [
         'service' => 'create_direct_pay_by_user',
@@ -63,18 +63,20 @@ class Alipay implements \simplephp\Bundle\src\PaymentInterface
 
     /**
      * 支付宝同步
+     * @param $option 无效参数
      * @return mixed|void
      */
-    public function verifyReturn() {
+    public function verifyReturn($option = []) {
         $alipayNotify = new AlipayNotify($this->alipay_config);
         return $alipayNotify->verifyReturn();
     }
 
     /**
      * 支付宝异步
+     * @param $option 无效参数
      * @return mixed|void
      */
-    public function verifyNotify() {
+    public function verifyNotify($option = []) {
         $alipayNotify = new AlipayNotify($this->alipay_config);
         return $alipayNotify->verifyNotify();
     }

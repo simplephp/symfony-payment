@@ -1,6 +1,6 @@
 <?php
 
-namespace simplephp\Bundle\DependencyInjection;
+namespace simplephp\payment\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
